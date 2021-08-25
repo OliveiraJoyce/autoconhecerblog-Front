@@ -7,7 +7,10 @@
         <div class="col-md-6 mt-5 mb-5">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-10">
-                    <h1 class="text-center"> Cadastro</h1>
+                    <h1 class="text-center my-5"> Cadastro</h1>
+                </div>
+                <div class="col-md-5">
+                    <!-- <h1 class="text-center"> Cadastro</h1> -->
 
                     <div class="form-group">
                         <label for="nome">Nome</label>
@@ -24,7 +27,8 @@
                         <label for="usuario">Usuário</label>
                         <input class="form-control" type="text" name="usuario" id="usuario" placeholder=" Digite seu Usuário">
                     </div>
-        
+                </div>
+                    <div class="col-md-5">
                     <div class="form-group">
                         <label for="foto">URL da Foto</label>
                         <input class="form-control" type="text" name="foto" id="foto" placeholder="Link da sua foto">
@@ -41,25 +45,35 @@
                         <input class="form-control" type="password" name="senha" id="confirmSenha"
                             placeholder="Confirme sua senha">
                     </div>
+                </div>
         
-                    <div class="form-group">
+                    <div class="col-md-8">
+                        <div class="form-group ">
                         <label for="tipo">Tipo de Usuário</label>
                         <select class="form-control" name="tipo" id="tipo">
                             <option value="normal">Padrão</option>
                             <option value="adm">Administrador</option>
                         </select>
+                    
                     </div>
+                    <!-- <div class="form-group">
+                        <label for="tipo">Tipo de Usuário</label>
+                        <select class="form-control" name="tipo" id="tipo">
+                            <option value="normal">Padrão</option>
+                            <option value="adm">Administrador</option>
+                        </select>
+                    </div> -->
         
-                    <div class="d-flex justify-content-around">
-                        <button type="submit" class="btn btn-danger mr-4"> Cancelar</button>
+                    <div class="d-flex justify-content-around my-5">
+                        <button type="submit" class="btn btn-danger mr-4" routerLink="/entrar"> Cancelar</button>
         
                         <button type="submit" class="btn btn-success"> Cadastrar</button>
                     </div>
                 </div>
             </div>
-
+        </div>
 
             
-        </div>
+        
     </div>
 </div>
