@@ -5,3 +5,7 @@
 a{
     cursor: pointer;
 }
+
+.bg-navbar {
+    background-color: #aa4d00;
+}

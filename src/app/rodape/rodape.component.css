@@ -22,3 +22,10 @@ color: black;
 .fa-linkedin-square:hover {
 color: #0072b1 ;
 }
+
+.bg-rodape{
+    background-color: #993e05;
+}
+.bg-footer{
+    background-color: #9f5220;
+}
