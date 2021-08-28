@@ -11,9 +11,9 @@ import { AuthService } from '../service/auth.service';
 })
 export class CadastrarComponent implements OnInit {
 
-  usuario: Usuario = new Usuario
-  confirmarSenha: string
-  tipoUsuario: string
+  usuario: Usuario = new Usuario();
+  confirmarSenha: string;
+  tipoUsuario: string;
 
 
   constructor( //Injeção de dependencia
@@ -39,7 +39,7 @@ export class CadastrarComponent implements OnInit {
     this.usuario.tipo = this.tipoUsuario
 
     if (this.usuario.senha != this.confirmarSenha) {
-      alert("A senha estão incorretas")
+      alert("As senhas estão diferentes")
 
     } else {
       this.authService.cadastrar(this.usuario).subscribe((resp: Usuario) =>{

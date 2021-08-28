@@ -8,4 +8,5 @@ public senha: string;
 public foto: string;
 public tipo: string;
 public postagem: Postagem[] ;
+public dataNascimento: Date
 }
