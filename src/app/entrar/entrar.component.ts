@@ -11,7 +11,7 @@ import { AuthService } from '../service/auth.service';
 })
 export class EntrarComponent implements OnInit {
 
-  usuarioLogin: UsuarioLogin = new UsuarioLogin
+  usuarioLogin: UsuarioLogin = new UsuarioLogin()
 
   constructor(
     private auth: AuthService,
@@ -20,10 +20,12 @@ export class EntrarComponent implements OnInit {
 
 
   ngOnInit() {
-    window.scroll(0, 0)
+    window.scroll(0,0)
   }
 
   entrar() {
+  console.log(this.usuarioLogin) //testando possiveis erros 
+
     this.auth.entrar(this.usuarioLogin).subscribe((resp: UsuarioLogin)=>{
       this.usuarioLogin = resp
       
@@ -39,7 +41,7 @@ export class EntrarComponent implements OnInit {
       
       this.router.navigate(["/inicio"])
     }, erro =>{
-      if (erro.status == 500) {
+      if(erro.status == 401) {
         alert("Usuário ou senha estão incorretos!")
       }
     })
