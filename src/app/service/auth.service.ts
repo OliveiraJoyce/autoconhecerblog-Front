@@ -10,7 +10,8 @@ import { UsuarioLogin } from '../model/UsuarioLogin';
 })
 export class AuthService {
 
-  constructor( private http: HttpClient) { }
+  constructor(
+     private http: HttpClient) { }
 
 
   entrar(usuarioLogin: UsuarioLogin): Observable<UsuarioLogin> {
