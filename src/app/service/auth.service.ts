@@ -23,6 +23,10 @@ return this.http.post<UsuarioLogin>('https://autoconhecerblog.herokuapp.com/usua
 
   }
 
+  getUserById(id: number): Observable<Usuario>{
+    return this.http.get<Usuario>(`https://autoconhecerblog.herokuapp.com/usuarios/${id}`)
+  }
+
   logado(){
     let ok: boolean = false
 
