@@ -36,4 +36,13 @@ export class PostagemService {
   deletePostagem(id: number) {
     return this.http.delete(`https://autoconhecerblog.herokuapp.com/postagens/${id}`, this.token)
   }
+
+  putCurtir(id: number): Observable<Postagem>{
+    return this.http.put<Postagem>(`https://autoconhecerblog.herokuapp.com/postagens/curtir${id}`, this.token)
+
+  }
+
+  putDescurtir(id: number): Observable<Postagem>{
+    return this.http.put<Postagem>(`https://autoconhecerblog.herokuapp.com/postagens/descurtir${id}`, this.token)
+  }
 }

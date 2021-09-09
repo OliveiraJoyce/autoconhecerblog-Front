@@ -33,8 +33,9 @@
             <a class="nav-link active" id="todasPostagens-tab" data-toggle="tab" href="#todasPostagens" role="tab"
                 aria-controls="todasPostagens" aria-selected="true">Todas as Postagens</a>
 
-            <a (click)="findByIdUser()" class="nav-link" id="minhasPostagens-tab" data-toggle="tab" href="#minhasPostagens" role="tab"
-                aria-controls="minhasPostagens" aria-selected="false">Minhas Postagens</a>
+            <a (click)="findByIdUser()" class="nav-link" id="minhasPostagens-tab" data-toggle="tab"
+                href="#minhasPostagens" role="tab" aria-controls="minhasPostagens" aria-selected="false">Minhas
+                Postagens</a>
 
             <a class="nav-link" id="postagemTema-tab" data-toggle="tab" href="#postagemTema" role="tab"
                 aria-controls="postagemTema" aria-selected="false">Postagem por Tema</a>
@@ -51,16 +52,26 @@
                         <small class="text-muted">Tema: {{postagem.tema.descricao}}</small>
 
                         <p class="card-text mt-3">{{postagem.texto}}</p>
-                        <p class="card-text"><small class="text-muted">{{postagem.data | date: 'dd/MM/yyyy'}} às
-                                {{postagem.data | date: 'HH:mm'}}</small></p>
+                        <p class="card-text"><small class="text-muted">{{postagem.date | date: 'dd/MM/yyyy'}} às
+                                {{postagem.date | date: 'HH:mm'}}</small></p>
                         <p class="card-text"><small class="text-muted">by: {{postagem.usuario.nome}}</small></p>
+                        <!-- Curtidas -->
+                        <p class="card-text"><small class="text-muted">
+                                <button class="btn" (click)="getByIdPostagem(postagem.id)" (click)="curtida"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
+                                
+                                Curtidas: {{postagem.curtidas}}
+                                <button class="btn" (click)="getByIdPostagem(postagem.id)" (click)="descurtir"><i class="fa fa-thumbs-down" aria-hidden="true"></i></button>
+
+                            </small>
+                        </p>
+                        <!-- /Curtidas -->
                     </div>
                 </div>
             </div>
 
         </div>
 
-
+        <!-- Minhas Postagens -->
         <div class="tab-pane fade" id="minhasPostagens" role="tabpanel" aria-labelledby="minhasPostagens-tab">
             <div class="card-columns">
                 <div class="card text-center" *ngFor="let postagem of usuario.postagem">
@@ -69,39 +80,39 @@
                         <small class="text-muted">Tema: {{postagem.tema.descricao}}</small>
 
                         <p class="card-text mt-3">{{postagem.texto}}</p>
-                        <p class="card-text"><small class="text-muted">{{postagem.data | date: 'dd/MM/yyyy'}} às
-                                {{postagem.data | date: 'HH:mm'}}</small></p>
+                        <p class="card-text"><small class="text-muted">{{postagem.date | date: 'dd/MM/yyyy'}} às
+                                {{postagem.date | date: 'HH:mm'}}</small></p>
 
-                                <a [routerLink]="['/postagem-edit',postagem.id]" class="text-info mr-3" href="">Editar</a>
-                           
-                                <a [routerLink]="['/postagem-delete',postagem.id]" class="text-danger" href="">Apagar</a>
+                        <a [routerLink]="['/postagem-edit',postagem.id]" class="text-info mr-3" href="">Editar</a>
+
+                        <a [routerLink]="['/postagem-delete',postagem.id]" class="text-danger" href="">Apagar</a>
 
                     </div>
                 </div>
             </div>
         </div>
         <div class="tab-pane fade" id="postagemTema" role="tabpanel" aria-labelledby="postagemTema-tab">
-           
+
             <div class="card-columns" *ngFor="let tema of listaTemas">
                 <div class="card text-center" *ngFor="let postagem of tema.postagem">
                     <div class="card-body">
                         <h5 class="card-title m-0">{{postagem.titulo}}</h5>
-                        
+
                         <p class="card-text mt-3">{{postagem.texto}}</p>
-                        <p class="card-text"><small class="text-muted">{{postagem.data | date: 'dd/MM/yyyy'}} às
-                                {{postagem.data | date: 'HH:mm'}}</small></p>
+                        <p class="card-text"><small class="text-muted">{{postagem.date | date: 'dd/MM/yyyy'}} às
+                                {{postagem.date | date: 'HH:mm'}}</small></p>
 
-                                <p class="card-text"><small class="text-muted">by: {{postagem.usuario.nome}}</small></p>
+                        <p class="card-text"><small class="text-muted">by: {{postagem.usuario.nome}}</small></p>
 
-                          
+
                     </div>
                 </div>
             </div>
-       
+
         </div>
     </div>
 </div>
-
+<!-- /Minhas Postagens -->
 
 <!-- Modal -->
 <div class="modal fade" id="novaPostagem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

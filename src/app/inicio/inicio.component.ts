@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/Postagem';
 import { Tema } from '../model/Tema';
 import { Usuario } from '../model/Usuario';
+import { AlertasService } from '../service/alertas.service';
 import { AuthService } from '../service/auth.service';
 import { PostagemService } from '../service/postagem.service';
 import { TemaService } from '../service/tema.service';
@@ -22,7 +23,7 @@ export class InicioComponent implements OnInit {
   tema: Tema = new Tema()
   listaTemas: Tema[]
   idTema: number
-
+  // idPostagem= environment.id ????????
 
   usuario: Usuario = new Usuario()
   idUser = environment.id
@@ -32,11 +33,13 @@ export class InicioComponent implements OnInit {
     private router: Router,
     private temaService: TemaService,
     private postagemService: PostagemService,
-    private authService: AuthService
+    private authService: AuthService,
+    private alertas: AlertasService
     
   ) { }
 
   ngOnInit() {
+    window.scroll(0,0)
   
     if(environment.token == ""){
       // alert("Sua seção expirou, faça o login novamente.")
@@ -79,8 +82,27 @@ findByIdUser(){
 
     this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem)=> {
       this.postagem = resp
-      alert("Postagem realizada com sucesso!!")
+      this.alertas.showAlertSuccess("Postagem realizada com sucesso!!")
       this.postagem = new Postagem()
+      this.getAllPostagens()
+    })
+  }
+
+  getByIdPostagem(id: number){
+    this.postagemService.getByIdPostagem(id).subscribe((resp:Postagem)=>{
+      this.idPostagem = resp
+    })
+  }
+
+  curtida(id: number){
+    this.postagemService.putCurtir(id).subscribe(()=>{
+      this.getAllPostagens()
+    })
+
+  }
+
+  descurtir(id: number){
+    this.postagemService.putDescurtir(id).subscribe(()=>{
       this.getAllPostagens()
     })
   }

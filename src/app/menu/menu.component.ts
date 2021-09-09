@@ -12,12 +12,13 @@ export class MenuComponent implements OnInit {
 
   nome = environment.nome
   foto = environment.foto
+  id = environment.id
 
   constructor(
     private router: Router
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
   sair(){
@@ -26,7 +27,7 @@ export class MenuComponent implements OnInit {
     environment.nome = ""
     environment.foto = ""
     environment.id = 0
-
+  console.log(this.nome)
   }
 
 }
