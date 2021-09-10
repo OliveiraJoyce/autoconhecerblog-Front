@@ -57,10 +57,10 @@
                         <p class="card-text"><small class="text-muted">by: {{postagem.usuario.nome}}</small></p>
                         <!-- Curtidas -->
                         <p class="card-text"><small class="text-muted">
-                                <button class="btn" (click)="getByIdPostagem(postagem.id)" (click)="curtida"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
+                                <button class="btn" (click)="getByIdPostagem(postagem.id)" (click)="curtida(postagem.id)"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
                                 
                                 Curtidas: {{postagem.curtidas}}
-                                <button class="btn" (click)="getByIdPostagem(postagem.id)" (click)="descurtir"><i class="fa fa-thumbs-down" aria-hidden="true"></i></button>
+                                <button class="btn" (click)="getByIdPostagem(postagem.id)" (click)="descurtir(postagem.id)"><i class="fa fa-thumbs-down" aria-hidden="true"></i></button>
 
                             </small>
                         </p>

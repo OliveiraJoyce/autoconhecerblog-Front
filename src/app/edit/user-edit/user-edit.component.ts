@@ -44,7 +44,7 @@ export class UserEditComponent implements OnInit {
   }
 
 
-  atualizar(event: any) {
+  atualizar() {
     this.usuario.tipo = this.tipoUsuario
 
     if (this.usuario.senha != this.confirmarSenha) {

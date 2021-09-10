@@ -23,7 +23,7 @@ export class InicioComponent implements OnInit {
   tema: Tema = new Tema()
   listaTemas: Tema[]
   idTema: number
-  // idPostagem= environment.id ????????
+  idPostagem: Postagem = new Postagem()
 
   usuario: Usuario = new Usuario()
   idUser = environment.id
@@ -45,6 +45,8 @@ export class InicioComponent implements OnInit {
       // alert("Sua seção expirou, faça o login novamente.")
       this.router.navigate(["/entrar"])
     }
+
+    this.postagemService.refreshToken()
     this.getAllTemas() //Listar todos os temas automaticamente 
     this.getAllPostagens()
   }
@@ -90,7 +92,7 @@ findByIdUser(){
 
   getByIdPostagem(id: number){
     this.postagemService.getByIdPostagem(id).subscribe((resp:Postagem)=>{
-      this.idPostagem = resp
+      this.idPostagem = resp 
     })
   }
 
