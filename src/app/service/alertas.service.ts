@@ -10,7 +10,8 @@ import { AlertasComponent } from '../alertas/alertas.component';
 export class AlertasService {
 
   constructor(
-    private bsModalService: BsModalService
+    private bsModalService: BsModalService,
+    
   ) { }
 
 

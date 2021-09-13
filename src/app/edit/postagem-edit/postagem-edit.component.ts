@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Postagem } from 'src/app/model/Postagem';
 import { Tema } from 'src/app/model/Tema';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { PostagemService } from 'src/app/service/postagem.service';
 import { TemaService } from 'src/app/service/tema.service';
 import { environment } from 'src/environments/environment.prod';
@@ -24,7 +25,8 @@ idTema: number
     private router: Router,
     private postagemService: PostagemService,
     private temaService: TemaService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alertas: AlertasService
 
   ) { }
 
@@ -64,7 +66,7 @@ atualizar(){
 
   this.postagemService.putPostagem(this.postagem).subscribe((resp: Postagem)=>{
     this.postagem = resp
-    alert("Postagem editada com sucesso")
+    this.alertas.showAlertSuccess("Postagem editada com sucesso")
     this.router.navigate(["/inicio"])
   })
 }
