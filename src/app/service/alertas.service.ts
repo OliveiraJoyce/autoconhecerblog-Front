@@ -11,7 +11,6 @@ export class AlertasService {
 
   constructor(
     private bsModalService: BsModalService,
-    
   ) { }
 
 

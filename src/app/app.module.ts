@@ -2,7 +2,9 @@ import {HttpClientModule} from '@angular/common/http'
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { OrderModule } from 'ngx-order-pipe';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +22,7 @@ import { PostagemDeleteComponent } from './delete/postagem-delete/postagem-delet
 import { AlertasComponent } from './alertas/alertas.component';
 
 import { UserEditComponent } from './edit/user-edit/user-edit.component';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +45,8 @@ import { UserEditComponent } from './edit/user-edit/user-edit.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    OrderModule
   ],
   providers: [{
     provide: LocationStrategy,
