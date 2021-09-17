@@ -18,7 +18,8 @@ export class InicioComponent implements OnInit {
 
   postagem: Postagem = new Postagem()
   listaPostagens: Postagem[]
-
+  tituloPost: string
+  nomeTema: string
 
   tema: Tema = new Tema()
   listaTemas: Tema[]
@@ -28,8 +29,8 @@ export class InicioComponent implements OnInit {
   usuario: Usuario = new Usuario()
   idUser = environment.id
 
-key = "data"
-reverse = true
+  key = "data"
+  reverse = true
 
 
   constructor(
@@ -38,13 +39,13 @@ reverse = true
     private postagemService: PostagemService,
     private authService: AuthService,
     private alertas: AlertasService
-    
+
   ) { }
 
   ngOnInit() {
-    window.scroll(0,0)
-  
-    if(environment.token == ""){
+    window.scroll(0, 0)
+
+    if (environment.token == "") {
       // alert("Sua seção expirou, faça o login novamente.")
       this.router.navigate(["/entrar"])
     }
@@ -54,38 +55,38 @@ reverse = true
     this.getAllPostagens()
   }
 
-getAllTemas(){
-  this.temaService.getAllTema().subscribe((resp: Tema[])=>{
-    this.listaTemas = resp
-  })
-}
+  getAllTemas() {
+    this.temaService.getAllTema().subscribe((resp: Tema[]) => {
+      this.listaTemas = resp
+    })
+  }
 
-findByIdTema(){
-  this.temaService.getByIdTema(this.idTema).subscribe((resp: Tema)=>{
-    this.tema = resp
-  })
-}
+  findByIdTema() {
+    this.temaService.getByIdTema(this.idTema).subscribe((resp: Tema) => {
+      this.tema = resp
+    })
+  }
 
-getAllPostagens(){
-  this.postagemService.getAllPostagens().subscribe((resp: Postagem[])=>{
-    this.listaPostagens = resp
-  })
-}
+  getAllPostagens() {
+    this.postagemService.getAllPostagens().subscribe((resp: Postagem[]) => {
+      this.listaPostagens = resp
+    })
+  }
 
-findByIdUser(){
-  this.authService.getUserById(this.idUser).subscribe((resp: Usuario) =>{
-    this.usuario = resp
-  })
-}
+  findByIdUser() {
+    this.authService.getUserById(this.idUser).subscribe((resp: Usuario) => {
+      this.usuario = resp
+    })
+  }
 
-  publicar(){
+  publicar() {
     this.tema.id = this.idTema
     this.postagem.tema = this.tema
 
     this.usuario.id = this.idUser
     this.postagem.usuario = this.usuario
 
-    this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem)=> {
+    this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp
       this.alertas.showAlertSuccess("Postagem realizada com sucesso!!")
       this.postagem = new Postagem()
@@ -93,22 +94,42 @@ findByIdUser(){
     })
   }
 
-  getByIdPostagem(id: number){
-    this.postagemService.getByIdPostagem(id).subscribe((resp:Postagem)=>{
-      this.idPostagem = resp 
+  getByIdPostagem(id: number) {
+    this.postagemService.getByIdPostagem(id).subscribe((resp: Postagem) => {
+      this.idPostagem = resp
     })
   }
 
-  curtida(id: number){
-    this.postagemService.putCurtir(id).subscribe(()=>{
+  curtida(id: number) {
+    this.postagemService.putCurtir(id).subscribe(() => {
       this.getAllPostagens()
     })
 
   }
 
-  descurtir(id: number){
-    this.postagemService.putDescurtir(id).subscribe(()=>{
+  descurtir(id: number) {
+    this.postagemService.putDescurtir(id).subscribe(() => {
       this.getAllPostagens()
     })
+  }
+
+  findByTituloPostagem() {
+    if (this.tituloPost == "") {
+      this.getAllPostagens()
+    } else {
+      this.postagemService.getByTituloPostagem(this.tituloPost).subscribe((resp: Postagem[]) => {
+        this.listaPostagens = resp
+      })
+    }
+  }
+
+  findByNomePostagem(){
+    if(this.nomeTema == ""){
+      this.getAllTemas()
+    }else{
+      this.temaService.getByNomeTema(this.nomeTema).subscribe((resp: Tema[])=>{
+this.listaTemas = resp
+      })
+    }
   }
 }
