@@ -1,4 +1,8 @@
-# BlogPessoal
+# AutoconhecerBlog-Front
+<br> Nesse repositório você encontra o Front-End do blog pessoal, utilizando HTML5 para a marcação do conteúdo, CSS3 para a estilização da página e JavaScript para a interação com o usuário, até a utilização de frameworks Angular com Bootstrap para facilitar a estilização das páginas. 
+<br> Projeto proposto pelo Bootcamp da Generation Brasil 
+
+______________________________________________________________________________________________________________________________
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.7.
 
